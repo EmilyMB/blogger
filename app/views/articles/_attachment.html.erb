@@ -1,0 +1,9 @@
+<div>
+  <h4>Attachment <%= attachment.id %></h4>
+  <p class="attachment"><%= comment.body %></p>
+  <p>
+    <% if @article.image.exists? %>
+    <%= image_tag @article.image.url %></p>
+    <% end %>
+    <p><%= @article.body %></p>
+</div>

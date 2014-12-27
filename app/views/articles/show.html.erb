@@ -1,10 +1,26 @@
 <h1><%= @article.title %></h1>
+
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
 </p>
+<p>
+  <% if @article.image.exists? %>
+    <p><%= image_tag @article.image.url %></br>
+  <% end %>
+</p>
+
+<p>
+<h2>STUFF(<%= @article.attachments.size %>)</h2>
+<% @article.attachments do |attachment| %>
+  <%= "HI THERE!" %>
+  <%= attachment.image_file_name %>
+  <%= image_tag attachment.image_url %>
+<% end %>
+</p>
+
 <p><%= @article.body %></p>
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
